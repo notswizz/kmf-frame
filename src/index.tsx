@@ -8,6 +8,7 @@ export const app = new Frog({
 imageAspectRatio: "1:1",
 imageOptions: { width: 100, height: 600 },
  basePath: '/api',
+ verify: 'silent',
  initialState: {
   index: 0,
   todos: []
