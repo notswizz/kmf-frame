@@ -6,13 +6,8 @@ import { serveStatic } from 'frog/serve-static';
 export const app = new Frog({
   title: 'Kiss, Marry, Fade Frame', // Required title property
 imageAspectRatio: "1:1",
-imageOptions: { width: 100, height: 600 },
+imageOptions: { width: 600, height: 600 },
  basePath: '/api',
- verify: 'silent',
- initialState: {
-  index: 0,
-  todos: []
-}
 
 });
 
