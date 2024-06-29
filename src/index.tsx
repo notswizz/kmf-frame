@@ -5,7 +5,7 @@ import { serveStatic } from 'frog/serve-static';
 // Correctly initialize the Frog application
 export const app = new Frog({
   title: 'Kiss, Marry, Fade Frame', // Required title property
-  imageOptions: { width: 1200, height: 630 }, // Aspect ratio 1.91:1
+
   imageAspectRatio: "1:1"
 });
 
@@ -55,7 +55,7 @@ app.frame('/', async (c) => {
 
   return c.res({
     image: selectedImageUrl, // Use the selected image URL
-    imageOptions: { width: 1200, height: 630 }, // Aspect ratio 1.91:1
+  
     intents: [
  // A button to refresh the image, posting to the same frame
       <Button value="kiss">Kiss</Button>, // A button to kiss the image, posting to the same frame
