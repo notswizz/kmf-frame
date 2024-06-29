@@ -1,6 +1,5 @@
 import { Button, Frog } from 'frog';
-import { devtools } from 'frog/dev'; // Import the devtools
-import { serveStatic } from 'frog/serve-static';
+
 
 // Correctly initialize the Frog application
 export const app = new Frog({
@@ -66,10 +65,4 @@ app.frame('/', async (c) => {
   });
 });
 
-// Attach the devtools for enhanced debugging
-devtools(app, { serveStatic });
 
-// Hono GET route for health check
-app.hono.get('/healthcheck', (c) => {
-  return c.text('ribbit');
-});
