@@ -22,15 +22,15 @@ async function fetchRandomImageUrl() {
         return data.url; // Return the single image URL
       } else {
         console.error('Unexpected JSON structure:', data);
-        return 'https://kmf-app.s3.us-east-2.amazonaws.com/uploads/1715813982658-IMG_3731.jpeg'; // Default image URL
+        return 'girl.JPG'; // Default image URL
       }
     } else {
       console.error('Failed to fetch image:', response.status);
-      return 'https://kmf-app.s3.us-east-2.amazonaws.com/uploads/1715813982658-IMG_3731.jpeg'; // Default image URL
+      return 'girl.JPG'; // Default image URL
     }
   } catch (error) {
     console.error('Error fetching image from the API:', error);
-    return 'https://kmf-app.s3.us-east-2.amazonaws.com/uploads/1715813982658-IMG_3731.jpeg'; // Default image URL
+    return 'girl.JPG'; // Default image URL
   }
 }
 
