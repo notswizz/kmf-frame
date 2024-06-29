@@ -6,8 +6,13 @@ import { serveStatic } from 'frog/serve-static';
 export const app = new Frog({
   title: 'Kiss, Marry, Fade Frame', // Required title property
 imageAspectRatio: "1:1",
-basePath: '/api',
-origin:'https://kmf-frame.vercel.app/'
+imageOptions: { width: 100, height: 600 },
+ basePath: '/api',
+ initialState: {
+  index: 0,
+  todos: []
+}
+
 });
 
 // Function to fetch a single random image URL from the API
