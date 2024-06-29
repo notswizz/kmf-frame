@@ -5,8 +5,9 @@ import { serveStatic } from 'frog/serve-static';
 // Correctly initialize the Frog application
 export const app = new Frog({
   title: 'Kiss, Marry, Fade Frame', // Required title property
-
-  imageAspectRatio: "1:1"
+imageAspectRatio: "1:1",
+basePath: '/api',
+origin:'https://kmf-frame.vercel.app/'
 });
 
 // Function to fetch a single random image URL from the API
@@ -30,7 +31,7 @@ async function fetchRandomImageUrl() {
     }
   } catch (error) {
     console.error('Error fetching image from the API:', error);
-    return 'https://kmf-app.s3.us-east-2.amazonaws.com/uploads/1715813982658-IMG_3731.jpeg'; // Default image URL
+    return 'girl.JPG'; // Default image URL
   }
 }
 
@@ -69,7 +70,3 @@ app.frame('/', async (c) => {
 // Attach the devtools for enhanced debugging
 devtools(app, { serveStatic });
 
-// Hono GET route for health check
-app.hono.get('/healthcheck', (c) => {
-  return c.text('ribbit');
-});
