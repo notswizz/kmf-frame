@@ -7,7 +7,7 @@ import { handle } from 'frog/vercel'
 export const app = new Frog({
   title: 'Frame', // Required title property
   imageAspectRatio: "1:1",
-  imageOptions: { width: 600, height: 600 },
+
   basePath: '/api',
 });
 
