@@ -1,6 +1,7 @@
 import { Button, Frog } from 'frog';
 import { devtools } from 'frog/dev'; // Import the devtools
 import { serveStatic } from 'frog/serve-static';
+import { handle } from 'frog/vercel'
 
 // Correctly initialize the Frog application
 export const app = new Frog({
@@ -33,13 +34,15 @@ async function fetchRandomImageUrl() {
   }
 }
 
-
 // Frame route to display the image and handle refresh
 app.frame('/', async (c) => {
   // Fetch the initial image or on refresh
-  let selectedImageUrl = await fetchRandomImageUrl();
-
-
+  let selectedImageUrl;
+  try {
+    selectedImageUrl = await fetchRandomImageUrl();
+  } catch (error) {
+    selectedImageUrl = '/girl.JPG'; // Use a placeholder image on error
+  }
 
   return c.res({
     image: selectedImageUrl, // Use the selected image URL
@@ -49,9 +52,13 @@ app.frame('/', async (c) => {
       <Button value="fade">Fade</Button>, // A button to fade the image, posting to the same frame
       <Button.Redirect location="https://www.k-marry-f.com/kmf">PLAY</Button.Redirect>, // Redirect button
     ],
-  
   });
 });
 
 // Attach the devtools for enhanced debugging
 devtools(app, { serveStatic });
+
+// Export Vercel handlers
+
+export const GET = handle(app)
+export const POST = handle(app)
