@@ -41,7 +41,7 @@ app.frame('/', async (c) => {
   try {
     selectedImageUrl = await fetchRandomImageUrl();
   } catch (error) {
-    selectedImageUrl = '/girl.JPG'; // Use a placeholder image on error
+    selectedImageUrl = '/girl.JPEG'; // Use a placeholder image on error
   }
 
   return c.res({
