@@ -1,13 +1,15 @@
 import { Button, Frog } from 'frog';
-import { devtools } from 'frog/dev'; // Import the devtools
+import { devtools } from 'frog/dev';
 import { serveStatic } from 'frog/serve-static';
-import { handle } from 'frog/vercel'
+import { handle } from 'frog/vercel';
+
+
 
 // Correctly initialize the Frog application
 export const app = new Frog({
   title: 'Frame', // Required title property
   imageAspectRatio: "1:1",
-
+  imageOptions: { width: 600, height: 600 },
   basePath: '/api',
 });
 
@@ -41,7 +43,7 @@ app.frame('/', async (c) => {
   try {
     selectedImageUrl = await fetchRandomImageUrl();
   } catch (error) {
-    selectedImageUrl = '/girl.JPEG'; // Use a placeholder image on error
+    selectedImageUrl = 'nextjs/public/girl.JPEG'; // Use a placeholder image on error
   }
 
   return c.res({
@@ -56,9 +58,12 @@ app.frame('/', async (c) => {
 });
 
 // Attach the devtools for enhanced debugging
-devtools(app, { serveStatic });
+if (import.meta.env?.MODE === 'development') {
+  devtools(app, { serveStatic });
+} else {
+  devtools(app, { assetsPath: '/.frog' });
+}
 
 // Export Vercel handlers
-
-export const GET = handle(app)
-export const POST = handle(app)
+export const GET = handle(app);
+export const POST = handle(app);
