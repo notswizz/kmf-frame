@@ -43,7 +43,7 @@ app.frame('/', async (c) => {
   try {
     selectedImageUrl = await fetchRandomImageUrl();
   } catch (error) {
-    selectedImageUrl = 'nextjs/public/girl.JPEG'; // Use a placeholder image on error
+    selectedImageUrl = '/nextjs/public/girl.JPEG'; // Use a placeholder image on error
   }
 
   return c.res({
